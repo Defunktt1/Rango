@@ -8,4 +8,5 @@ def index(request):
 
 
 def about(request):
-    return HttpResponse("Page about my site")
+    cat = {'cat': "cat"}
+    return render(request, 'home/about.html', context=cat)
