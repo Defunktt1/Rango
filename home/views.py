@@ -3,4 +3,9 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Rango says hey there partner!")
+    context_dict = {'boldmessage': "Crunchy, creamy, cookie, candy, cupcake!"}
+    return render(request, 'home/index.html', context=context_dict)
+
+
+def about(request):
+    return HttpResponse("Page about my site")
