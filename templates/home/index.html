@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+{% load staticfiles %}
+
 <html>
 
     <head>
@@ -11,8 +14,11 @@
             hey there partner! <br />
             <strong>{{ boldmessage }}</strong><br />
         </div>
+
         <div>
             <a href="/home/about/">About</a><br />
+            <img src="{% static "images/592781.jpg" %}"
+                 alt="Fuji" />
         </div>
     </body>
 
