@@ -3,23 +3,30 @@
 {% load staticfiles %}
 
 <html>
+<head>
+    <title>Rango</title>
+</head>
 
-    <head>
-        <title>Rango</title>
-    </head>
+<body>
+    <h1>Rango says...</h1>
+    <div>hey there partner!</div>
 
-    <body>
-        <h1>Rango says...</h1>
-        <div>
-            hey there partner! <br />
-            <strong>{{ boldmessage }}</strong><br />
-        </div>
+    <div>
+    {% if categories %}
+        <ul>
+            {% for category in categories %}
+                <li>{{ category.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>There are no categories present.</strong>
+    {% endif %}
+    </div>
 
-        <div>
-            <a href="/home/about/">About</a><br />
-            <img src="{% static "images/592781.jpg" %}"
-                 alt="Fuji" />
-        </div>
-    </body>
+    <div>
+        <a href="/home/about">About</a><br />
+        <img src="{% static "images/python.png" %}" alt="Python logo" />
+    </div>
+</body>
 
 </html>
