@@ -44,7 +44,7 @@ class AboutPageTests(TestCase):
         # Check if in the about page is there - and contains the specified message
         # Exercise from Chapter 4
         response = self.client.get(reverse('about'))
-        self.assertIn(b'This tutorial has been put together by', response.content)
+        self.assertIn(b'This is a cat!', response.content)
 
     def test_about_contain_image(self):
         # Check if is there an image on the about page
@@ -66,11 +66,9 @@ class ModelTests(TestCase):
             from populate_script import populate
             populate()
         except ImportError:
-            print('The module populate_rango does not exist')
+            print('The module populate does not exist')
         except NameError:
             print('The function populate() does not exist or is not correct')
-        except:
-            print('Something went wrong in the populate() function :-(')
 
     def get_category(self, name):
 
@@ -132,8 +130,6 @@ class Chapter5ViewTests(TestCase):
             print('The module populate_rango does not exist')
         except NameError:
             print('The function populate() does not exist or is not correct')
-        except:
-            print('Something went wrong in the populate() function :-(')
 
     def get_category(self, name):
 
@@ -168,11 +164,12 @@ class Chapter5ViewTests(TestCase):
     # check admin interface - is it configured and set up
 
     def test_admin_interface_page_view(self):
-        from admin import PageAdmin
+        from home.admin import PageAdmin
         self.assertIn('category', PageAdmin.list_display)
         self.assertIn('url', PageAdmin.list_display)
 
-
+# -------------------------------------------------------------------------------------
+'''
 class Chapter6ViewTests(TestCase):
     def setUp(self):
         try:
@@ -204,8 +201,11 @@ class Chapter6ViewTests(TestCase):
         # test does index page contain the words "most liked" and "most viewed"
 
         # test does category page contain a link back to index page?
+'''
 
+# --------------------------------------------------------------------------------------------
 
+'''
 class Chapter7ViewTests(TestCase):
     def setUp(self):
         try:
@@ -220,15 +220,4 @@ class Chapter7ViewTests(TestCase):
             print('Something else went wrong :-(')
 
     pass
-    # test is there a PageForm in home.forms
-
-    # test is there a CategoryForm in home.forms
-
-    # test is there an add page page?
-
-    # test is there an category page?
-
-    # test if index contains link to add category page
-    # <a href="/rango/add_category/">Add a New Category</a><br />
-
-    # test if the add_page.html template exists.
+'''
