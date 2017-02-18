@@ -4,7 +4,9 @@ from home.models import Category, Page
 
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
-    context_dict = {"categories": category_list}
+    top_pages = Page.objects.order_by('-views')[:5]
+    context_dict = {"categories": category_list,
+                    "pages": top_pages}
     return render(request, 'home/index.html', context=context_dict)
 
 
