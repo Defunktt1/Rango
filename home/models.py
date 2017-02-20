@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from transliterate import translit
 
 
 class Category(models.Model):
@@ -9,7 +10,12 @@ class Category(models.Model):
     slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        if not self.slug:
+            translit_list = Category.objects.filter(name=translit(self.name, 'ru', reversed=True))
+            if translit_list:
+                self.slug = slugify(translit(self.name, 'ru', reversed=True)) + "-" + str(len(translit_list) + 1)
+            else:
+                self.slug = slugify(translit(self.name, 'ru', reversed=True))
         super().save(*args, **kwargs)
 
     class Meta:
