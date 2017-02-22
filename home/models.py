@@ -9,6 +9,14 @@ class Category(models.Model):
     likes = models.IntegerField(default=0)
     slug = models.SlugField(unique=True)
 
+    '''def save(self, *args, **kwargs):
+        returned_length = Category.objects.filter(name=self.name)
+        if returned_length:
+            self.slug = slugify(translit(self.name, 'ru', reversed=True)) + "-" + str(len(returned_length))
+        else:
+            self.slug = slugify(translit(self.name, 'ru', reversed=True))
+        super().save(*args, **kwargs)
+'''
     def save(self, *args, **kwargs):
         temp_slug = slugify(translit(self.name, 'ru', reversed=True))
         while Category.objects.filter(slug=temp_slug):
