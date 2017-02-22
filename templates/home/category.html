@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
+<html>
+    <head>
+        <title>Category</title>
+    </head>
 
 
-
-<body>
-    <div>
+    <body>
+        <h1>{{ category.name }}</h1>
+		<div>
         {% if category %}
-            <h1>{{ category.name }}</h1>
             {% if pages %}
                 <ul>
                     {% for page in pages %}
@@ -22,15 +19,16 @@
                 <strong>No pages currently in category.</strong>
             {% endif %}
         {% else %}
-            <strong>The specified category does not exist!</strong>
+            The specified category does not exist!
         {% endif %}
-    </div>
+	</div>
 
-    <div>
-        <a href="/home"><strong>back to home page</strong></a>
-    </div>
-</body>
-
-
+	<div>
+		{% if category %}
+			<a href="/home/category/{{category.slug}}/add_page/">Add Page</a> <br/>
+		{% endif %}
+		<a href="/home/">Home page</a><br />
+	</div>
+    </body>
 
 </html>
